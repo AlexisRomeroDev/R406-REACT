@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+<body>
+
+    <h1>Timer</h1>
+    <h2>Code procédural</h2>
+
+    <div class="timer">
+        <div class="value">0</div>
+        <button>START</button>
+    </div>
+
+
+    <script>
+
+        const root = document.querySelector('.timer')
+        const value = root.querySelector('.value')
+        root.querySelector('button').addEventListener('click', startTimer)
+
+        function startTimer(){
+            setInterval(()=>{ 
+                value.textContent = parseInt(value.textContent) + 1
+            }, 1000)
+        }
+        
+
+    </script>
+    
+</body>
+</html>

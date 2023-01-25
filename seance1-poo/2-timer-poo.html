@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+<body>
+    <h1>Timer</h1>
+    <h2>Programmation orientée objet</h2>
+
+    <div class="timer">
+        <div class="value">0</div>
+        <button>START</button>
+    </div>
+
+
+    <script>
+
+        class Timer {
+
+            // Constructeur de la classe : code executé à l'instanciation
+            // Possibilité de passer des paramètres ...
+
+            constructor(){
+
+                // Propriétés de la classe
+                this.root = document.querySelector('.timer')
+                this.value = this.root.querySelector('.value')
+
+                this.root.querySelector('button').addEventListener('click', this.start.bind(this))
+            }
+
+            // Méthode de la classe
+
+            start(){
+                setInterval(()=>{ 
+                    this.value.textContent = parseInt(this.value.textContent) + 1
+                }, 1000)
+            }
+            
+        }
+
+        // Instanciation
+
+        const timer = new Timer(); 
+        
+
+    </script>
+    
+</body>
+</html>
