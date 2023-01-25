@@ -1,7 +1,13 @@
 
+// Définition de classe qui hérite de la classe React Component
+
 class Timer extends React.Component {
 
+    // Le constructeur obligatoire
+
     constructor(props){
+
+        // L'appel du constructeur parent obligatoire
 
         super(props)
 
@@ -25,6 +31,8 @@ class Timer extends React.Component {
         }, 1000)
 
     }
+
+    // La fonction render utilisée pour l'affichage !
 
     render(){
 

@@ -1,7 +1,7 @@
-function Like(){
+function Like(props){
 
 const sayHello = () => {
-  console.log("hello")
+  console.log(props.post.id)
 }
 
   return <span onClick={sayHello}><button>Like</button></span>
@@ -9,14 +9,10 @@ const sayHello = () => {
 
 function MyApp() {
 
-  const handleClick = () => {
-    console.log('click sur le titre')
-  }
-
      return (
       <div>     
-        <h1 onClick={handleClick}>Hello, world!</h1>
-        <Like/>
+        <h1>Like this !</h1>
+        <Like post={{'id': 1}} />
       </div>
      )     
    }
