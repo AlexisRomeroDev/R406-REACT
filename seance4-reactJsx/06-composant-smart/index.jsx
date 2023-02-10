@@ -5,9 +5,9 @@ function Alert({type}){
     'info': {'color': 'blue'}
   }
 
-  console.log(types[type].color)
+  // console.log(types[type].color)
 
-  return <button className={type}>{type}</button>
+  return <button className={types[type].color}>{type}</button>
 }
 
 function MyApp() {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
     <style>
-        .container{
+        .app{
             margin: 1em auto;
             border: 1px solid grey;
             padding: 1em;
@@ -63,15 +63,14 @@
         </tr>
     </table>
 
-   <div class="container">
-    <div class="timer">
-        <div class="value">0</div>
+    <div class="app">
+        <div class="timer">...</div>
         <button class="start">START</button>
         <button class="pause">PAUSE</button>
         <button class="play">PLAY</button>
         <button class="stop">STOP</button>
     </div>
-   </div>
+
 
 
     <script>
@@ -80,8 +79,9 @@
 
             constructor(){
 
-                this.root = document.querySelector('.timer')
-                this.value = this.root.querySelector('.value')
+                this.root = document.querySelector('.app')
+                this.HtmlElement = document.querySelector('.timer')
+                this.value = 0
 
                 // 3 propriétés associées aux éléments du DOM 
                 this.startButton = this.root.querySelector('.start')
@@ -150,7 +150,8 @@
                 this.isRunning = true;
                 this.render()
                 this.interval = setInterval(()=>{ 
-                    this.value.textContent = parseInt(this.value.textContent) + 1
+                    this.value ++
+                    this.HtmlElement.textContent = this.value
                 }, 1000)
             }
 
@@ -164,7 +165,8 @@
                 this.isRunning = true
                 this.render()
                 this.interval = setInterval(()=>{ 
-                    this.value.textContent = parseInt(this.value.textContent) + 1
+                    this.value ++
+                    this.HtmlElement.textContent = this.value
                 }, 1000)
             }
 
@@ -173,8 +175,7 @@
                 this.isRunning = false
                 this.render()
                 clearInterval(this.interval)
-            }
-            
+            }            
         }
 
         const timer = new Timer(); 

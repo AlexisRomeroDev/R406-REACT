@@ -10,8 +10,8 @@
     <h1>Timer</h1>
     <h2>Programmation orientée objet</h2>
 
-    <div class="timer">
-        <div class="value">0</div>
+    <div class="app">
+        <div class="timer">...</div>
         <button>START</button>
     </div>
 
@@ -26,17 +26,18 @@
             constructor(){
 
                 // Propriétés de la classe
-                this.root = document.querySelector('.timer')
-                this.value = this.root.querySelector('.value')
+                this.HtmlElement = document.querySelector('.timer')
+                this.value = 0
 
-                this.root.querySelector('button').addEventListener('click', this.start.bind(this))
+                document.querySelector('button').addEventListener('click', this.start.bind(this))
             }
 
             // Méthode de la classe
 
             start(){
                 setInterval(()=>{ 
-                    this.value.textContent = parseInt(this.value.textContent) + 1
+                    this.value ++
+                    this.HtmlElement.textContent = this.value
                 }, 1000)
             }
             

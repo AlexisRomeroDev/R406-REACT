@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        .app{
+            margin: 1em auto;
+            border: 1px solid grey;
+            padding: 1em;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timer</h1>
+    <h2>Programmation orientée objet</h2>
+    
+    L'application doit maintenant être codée en utilisant 2 composants : <br>
+    - Une classe StartButton, une classe StopButton <br>
+    - Une classe Timer <br>
+    <br>
+    <br>
+
+    Une autre solution solution avec une classe supplémentaire, injectée dans les boutons....
+    
+    <div class="app">
+        <div class="timer">...</div>
+        <button class="start">START</button>
+        <button class="stop">STOP</button>
+    </div>
+</div>
+
+
+<script>
+    
+    class App{
+        
+        constructor(){
+            
+            this.startButton = new StartButton(this)  // Injection de dépendance          
+            this.stopButton = new StopButton(this) // Injecton de dépendance
+            this.timer = new Timer()                                
+        }         
+    }    
+    
+    class StartButton {
+        
+        constructor(app){
+
+            this.app = app
+            
+            this.htmlElement = document.querySelector('.start');            
+            
+            // Listeners
+            this.htmlElement.addEventListener('click', () => {
+                this.app.timer.start()
+                this.app.timer.isStarted = true;               
+            })
+        } 
+        
+    }
+    
+    
+    class StopButton {
+        
+        constructor(app){
+
+            this.app = app
+            
+            this.htmlElement = document.querySelector('.stop');            
+            
+            // Listeners
+            this.htmlElement.addEventListener('click', () => {
+                this.app.timer.stop()
+                this.app.timer.isStarted = false;
+            })
+        }
+        
+    }
+    
+    class Timer {
+        
+        constructor(){
+            
+            this.htmlElement = document.querySelector('.timer')
+            this.value = 0   
+            this.isStarted = false
+        }          
+        
+        start(){  
+            this.interval = setInterval(()=>{ 
+                this.value ++
+                this.htmlElement.textContent = this.value
+            }, 1000)
+        } 
+        
+        stop(){
+            clearInterval(this.interval) 
+        } 
+    }
+    
+    const buttons = new App()
+    
+    
+</script>
+
+</body>
+</html>

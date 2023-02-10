@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        .app{
+            margin: 1em auto;
+            border: 1px solid grey;
+            padding: 1em;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timer</h1>
+    <h2>Programmation orientée objet</h2>
+    <h3>Pattern Singleton</h3>
+    
+    L'application doit maintenant être codée en utilisant 2 composants : <br>
+    - Une classe StartButton, une classe StopButton <br>
+    - Une classe Timer <br>
+    <br>
+
+    <br>
+
+    Le code suivant fonctionne car l'instance de timer est la même...
+    
+    <div class="app">
+        <div class="timer">...</div>
+        <button class="start">START</button>
+        <button class="stop">STOP</button>
+    </div>
+</div>
+
+
+<script>
+    
+    class StartButton {
+        
+        constructor(){
+            
+            // Dom Element
+            this.startButton = document.querySelector('.start');
+            this.stopButton = document.querySelector('.stop');             
+            
+            // Timer
+            this.timer = new Timer()
+            
+            // Listeners
+            this.startButton.addEventListener('click', () => {
+                this.timer.start()
+            })
+        }
+        
+    }
+    
+    
+    class StopButton {
+        
+        constructor(){
+            
+            // Dom Element
+            this.stopButton = document.querySelector('.stop');  
+            this.startButton = document.querySelector('.start'); 
+            
+            // Timer
+            this.timer = new Timer()
+            
+            // Listeners
+            this.stopButton.addEventListener('click', () => {
+                this.timer.stop()
+            })
+        }        
+    }
+    
+    class Timer {
+        
+        constructor(){
+
+            // ---> Return singleton <--- //
+            
+            if (Timer.exists){
+                return Timer.instance // C'est toujours la même instance
+            }
+
+            Timer.exists = true;
+            Timer.instance = this;
+
+            // ---> Return singleton <--- //
+
+            this.htmlElement = document.querySelector('.timer')
+            this.value = 0   
+        }          
+        
+        start(){  
+            this.interval = setInterval(()=>{ 
+                this.value ++
+                this.htmlElement.textContent = this.value
+            }, 1000)
+        } 
+        
+        stop(){
+            clearInterval(this.interval) // GOOD : this.interval est bien défini.
+        } 
+    }
+    
+    const startBbutton = new StartButton()
+    const stopButton = new StopButton()
+    
+    
+</script>
+
+</body>
+</html>

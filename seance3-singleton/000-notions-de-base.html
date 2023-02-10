@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        
+        // Héritage de classe //////////////
+        
+        class User{
+            constructor(name){
+                this.name = name
+            }
+        }
+        
+        class Student extends User {
+            constructor(name, diploma){
+                super(name)
+                this.diploma = diploma
+            }
+        }
+        
+        class Professor extends User {
+            constructor(name, skills){
+                super(name)
+                this.skills = skills
+            }
+        }
+        
+        const younes = new Student('younes', 'but')
+        const lisa = new Professor('lisa', 'php')
+        
+        console.log(younes instanceof Student)
+        console.log(lisa instanceof Professor)
+
+        // Exercice : rectangle et rond hérite de shape ; carré hérite de rectangle
+
+        // 2. Constantes de classe ///////////
+        
+        class Bicycle{
+            constructor(color){
+                this.color = color
+            }
+        }
+        
+        Bicycle.hasWheels = true
+        const v = new Bicycle('green')
+        console.log(v)
+        console.log(Bicycle)
+
+
+        
+        // 3. Pattern singleton ///////////
+        
+        class Timer{
+            constructor(start){
+                this.start = start                
+            }
+        }
+        
+        const a = new Timer(1)
+        const b = new Timer(2)
+        console.log(a)
+        console.log(b)
+        
+        
+        class SingleTimer{
+            constructor(start){
+                
+                if(SingleTimer.exists){
+                    return SingleTimer.instance
+                }
+                
+                SingleTimer.exists = true
+                SingleTimer.instance = this
+                
+                this.start = start
+            }
+        }
+        
+        const c = new SingleTimer(3)
+        const d = new SingleTimer(4)
+        console.log(c)
+        console.log(d)
+        
+        
+    </script>
+</body>
+</html>

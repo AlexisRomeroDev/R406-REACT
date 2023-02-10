@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        .app{
+            margin: 1em auto;
+            border: 1px solid grey;
+            padding: 1em;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timer</h1>
+    <h2>Programmation orientée objet</h2>
+
+    L'application doit maintenant être codée en utilisant 2 composants : <br>
+    - Une classe Buttons <br>
+    - Une classe Timer <br>
+     <br>
+
+   <div class="app">
+        <div class="timer">...</div>
+        <button class="start">START</button>
+    </div>
+   </div>
+
+
+    <script>
+
+        class Button {
+
+            constructor(){
+
+                // Dom Element
+                this.startButton = document.querySelector('.start');
+                
+                // Timer
+                this.timer = new Timer()
+
+                // Affichage du bouton
+                this.render()
+
+                // Listeners
+                this.startButton.addEventListener('click', () => {
+                    this.timer.isStarted = true;
+                    this.timer.start()
+                    this.render()
+                })
+            }
+
+            render(){
+                if(this.timer.isStarted){
+                    this.startButton.style.display = 'none'
+                }else{
+                    this.startButton.style.display = 'inline-block'
+                }
+            }
+            
+        }
+
+        class Timer {
+
+            constructor(){
+                this.htmlElement = document.querySelector('.timer')
+                this.value = 0 
+                this.isStarted = false            
+            }          
+
+            start(){  
+                this.interval = setInterval(()=>{ 
+                    this.value ++
+                    this.htmlElement.textContent = this.value
+                }, 1000)
+            }   
+        }
+        
+        const buttons = new Button()
+        
+
+    </script>
+    
+</body>
+</html>

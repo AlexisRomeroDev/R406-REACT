@@ -11,8 +11,8 @@
     <h1>Timer</h1>
     <h2>Programmation fonctionnelle</h2>
 
-    <div class="timer">
-        <div class="value">0</div>
+    <div class="app">
+        <div class="timer">...</div>
         <button>START</button>
     </div>
 
@@ -21,13 +21,13 @@
 
         function timer() {
 
-            const root = document.querySelector('.timer')
-            const value = root.querySelector('.value')
-            root.querySelector('button').addEventListener('click', start)
+            let value = 0
+            document.querySelector('button').addEventListener('click', start)
 
             function start(){
                 setInterval(()=>{ 
-                    value.textContent = parseInt(value.textContent) + 1
+                    value++
+                    document.querySelector('.timer').textContent = value
                 }, 1000)
             }            
             

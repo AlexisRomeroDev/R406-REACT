@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        .container{
+            margin: 1em auto;
+            border: 1px solid grey;
+            padding: 1em;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timer</h1>
+    <h2>Programmation orientée objet</h2>
+    <h3>Exercice optionnel 2</h3>
+
+   L'application doit maintenant être codée en utilisant 3 composants : <br>
+   - Une classe State <br>
+   - Une classe Buttons <br>
+   - Une classe Timer <br>
+    <br>
+    <br>
+    Dans cet exemple, l'application comporte 4 boutons.<br>
+    Et surtout : les propriétés servant à décrire l'état de l'application ne sont plus dans le Timer, mais dans une class App
+   
+
+   <div class="container">
+    <div class="timer">
+        <div class="value">0</div>
+        <button class="start">START</button>
+        <button class="pause">PAUSE</button>
+        <button class="play">PLAY</button>
+        <button class="stop">STOP</button>
+    </div>
+   </div>
+
+
+    <script>
+
+        class State {
+
+            constructor(){
+
+                if(State.exists){
+                    return State.instance
+                }
+
+                State.instance = this
+                State.exists = true
+
+                // Etats du timer
+                this.isStarted = false
+                this.isRunning = false
+                this.isStopped = false
+            }
+
+        }
+
+        class Buttons {
+
+            constructor(){
+
+            // State
+            this.state = new State()
+            
+            // Timer
+            this.timer = new Timer()
+
+            // 3 propriétés associées aux éléments du DOM 
+            this.root = document.querySelector('.container')
+            this.startButton = this.root.querySelector('.start')
+            this.pauseButton = this.root.querySelector('.pause')
+            this.playButton = this.root.querySelector('.play')
+            this.stopButton = this.root.querySelector('.stop')
+
+             // Affichage des boutons
+             this.render()
+
+             // Listeners
+            this.root.querySelector('.start').addEventListener('click', () => {
+                this.timer.start()
+                this.render()
+            })
+            this.root.querySelector('.pause').addEventListener('click', ()=>{
+                this.timer.pause()
+                this.render()
+            })
+            this.root.querySelector('.play').addEventListener('click', ()=>{
+                this.timer.play()
+                this.render()
+            })
+            this.root.querySelector('.stop').addEventListener('click', ()=>{
+                this.timer.stop()
+                this.render()
+            })
+            }
+
+            render(){
+                this.renderStartBtn()
+                this.renderPauseBtn()
+                this.renderPlayBtn()
+                this.renderStopBtn()
+            }
+
+            renderStartBtn(){
+                if(this.state.isStarted){
+                    this.startButton.style.display = 'none'
+                }else{
+                    this.startButton.style.display = 'inline-block'
+                }
+            }
+
+            renderPauseBtn(){
+                if(this.state.isRunning){
+                    this.pauseButton.style.display = 'inline-block'
+                }else{
+                    this.pauseButton.style.display = 'none'
+                }
+            }
+
+            renderPlayBtn(){
+                if(this.state.isStarted  && !this.state.isRunning && !this.state.isStopped){
+                    this.playButton.style.display = 'inline-block'
+                }else{
+                    this.playButton.style.display = 'none'
+                }
+            }
+
+            renderStopBtn(){
+                if(this.state.isStarted && !this.state.isStopped){
+                    this.stopButton.style.display = 'inline-block'
+                }else{
+                    this.stopButton.style.display = 'none'
+                }
+            }
+        }
+
+        class Timer {
+
+            constructor(){
+                this.root = document.querySelector('.timer')
+                this.value = this.root.querySelector('.value') 
+                this.state = new State()              
+            }          
+
+            start(){
+                this.state.isStarted = true;
+                this.state.isRunning = true;
+
+                this.interval = setInterval(()=>{ 
+                    this.value.textContent = parseInt(this.value.textContent) + 1
+                }, 1000)
+            }
+
+            pause(){
+                this.state.isRunning = false
+
+                clearInterval(this.interval)
+            }
+
+            play(){
+                this.state.isRunning = true
+ 
+                this.interval = setInterval(()=>{ 
+                    this.value.textContent = parseInt(this.value.textContent) + 1
+                }, 1000)
+            }
+
+            stop(){
+                this.state.isStopped = true;
+                this.state.isRunning = false
+
+                clearInterval(this.interval)
+            }
+            
+        }
+        
+        const timer = new Timer()
+        const buttons = new Buttons()
+        
+
+    </script>
+    
+</body>
+</html>
