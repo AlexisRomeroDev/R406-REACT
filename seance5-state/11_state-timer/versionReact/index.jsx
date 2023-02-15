@@ -5,19 +5,17 @@ class Timer extends React.Component {
 
     // Le constructeur obligatoire
 
-    constructor(props){
+    constructor(){
 
         // L'appel du constructeur parent obligatoire
 
-        super(props)
+        super()
 
         this.value = 3 
 
         this.timer = setInterval(()=>{ 
             
             this.value -=1
-
-            console.log(this.value) 
     
             if(this.value == 0){    
                 
@@ -32,12 +30,8 @@ class Timer extends React.Component {
 
     }
 
-    // La fonction render utilisée pour l'affichage !
-
     render(){
 
-        // Affichage conditionnel 
-        
         return this.value > 0 ? (
             <div>{this.value}</div>
         ):(
@@ -45,6 +39,10 @@ class Timer extends React.Component {
         )
     }
 }
+
+// A Savoir :
+
+// 
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);

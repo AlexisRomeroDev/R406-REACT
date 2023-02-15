@@ -60,6 +60,11 @@ function MyApp() {
       ) 
       
     }
+
+    // A Savoir :
+    // Boucler sur une liste d’éléments
+    // méthode .map()
+    // propriété key obligatoire
     
     const container = document.getElementById('root');
     const root = ReactDOM.createRoot(container);

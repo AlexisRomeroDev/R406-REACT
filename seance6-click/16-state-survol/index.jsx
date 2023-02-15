@@ -3,13 +3,13 @@ class Address extends React.Component{
   constructor(props){
     super(props)
     this.props = props
-    const style = {}
-    this.state={style}
+    const style = {} // On utilise toujours un objet pour l'attribut style des composants React
+    this.state={style} // NB : Equivaut à this.state.style = style
   }
 
   mouseOver(){
     const style = { color:"red"}
-    this.setState({style})
+    this.setState({style}) // NB : Equivaut à this.setState({style:style})
   }
 
   mouseOut(){

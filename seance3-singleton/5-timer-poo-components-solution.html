@@ -15,13 +15,17 @@
     </style>
 </head>
 <body>
-    <h1>Timer</h1>
-    <h2>Programmation orientée objet</h2>
+    <h1>Programmation orientée objet</h1>
+    <h2>Introduction au Pattern Singleton 1/2</h2>
 
     L'application doit maintenant être codée en utilisant 2 composants : <br>
     - Une classe Buttons <br>
     - Une classe Timer <br>
      <br>
+     La classe Timer est fournie.<br>
+     Implémenter la classe Button :<br>
+     - Mettre en place un eventListener pour lancer le compteur<br>
+     - Utiliser une propriéte isStarted dans le Timer pour piloter l'affichage ou le masquage du bouton<br>
 
    <div class="app">
         <div class="timer">...</div>
@@ -42,25 +46,13 @@
                 // Timer
                 this.timer = new Timer()
 
-                // Affichage du bouton
-                this.render()
-
                 // Listeners
                 this.startButton.addEventListener('click', () => {
-                    this.timer.isStarted = true;
                     this.timer.start()
                     this.render()
                 })
             }
-
-            render(){
-                if(this.timer.isStarted){
-                    this.startButton.style.display = 'none'
-                }else{
-                    this.startButton.style.display = 'inline-block'
-                }
-            }
-            
+           
         }
 
         class Timer {

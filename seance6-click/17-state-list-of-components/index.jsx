@@ -16,14 +16,14 @@ class Address extends React.Component{
     return (
       <p>        
       <button 
-      href="#" 
-      style={{fontWeight: 'bold', fontFamily: 'sans-serif'}} 
-      title="delete"
+        href="#" 
+        style={{fontWeight: 'bold', fontFamily: 'sans-serif'}} 
+        title="delete"
 
-      // 2. On appelle la methode removeItem 
-      // On bind le composant si nécessaire : this.handleItemRemoval.bind(this)
-      
-      onClick={this.handleItemRemoval}
+        // 2. On appelle la methode removeItem 
+        // On bind le composant si nécessaire : this.handleItemRemoval.bind(this)
+        
+        onClick={this.handleItemRemoval}
       >X</button>
       &nbsp;
       <a href='#'>{this.props.value}</a>

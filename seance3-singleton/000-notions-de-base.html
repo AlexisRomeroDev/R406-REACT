@@ -58,19 +58,19 @@
         // 3. Pattern singleton ///////////
         
         class Timer{
-            constructor(start){
-                this.start = start                
+            constructor(){
+                this.start = Math.round(Math.floor()*100)                
             }
         }
         
-        const a = new Timer(1)
-        const b = new Timer(2)
+        const a = new Timer()
+        const b = new Timer()
         console.log(a)
         console.log(b)
         
         
         class SingleTimer{
-            constructor(start){
+            constructor(){
                 
                 if(SingleTimer.exists){
                     return SingleTimer.instance
@@ -79,12 +79,12 @@
                 SingleTimer.exists = true
                 SingleTimer.instance = this
                 
-                this.start = start
+                this.start = Math.round(Math.floor()*100) 
             }
         }
         
-        const c = new SingleTimer(3)
-        const d = new SingleTimer(4)
+        const c = new SingleTimer()
+        const d = new SingleTimer()
         console.log(c)
         console.log(d)
         

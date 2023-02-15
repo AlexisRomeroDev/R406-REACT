@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        .app{
+            margin: 1em auto;
+            border: 1px solid grey;
+            padding: 1em;
+            width: 80%;
+        }
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 1px solid grey;
+            background-color: red;
+        }
+        
+        .circle.running{
+            background-color: green;
+        }
+
+        button.hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Programmation orientée objet</h1>
+    <h2>Introduction au Pattern Observer</h2>
+    
+    L'application doit maintenant être codée en utilisant 3 composants : <br>
+    - Une classe StartButton, une classe StopButton <br>
+    - Une classe Timer <br>
+    - Une class Circle : rouge lorsque le Timer est à l'arrêt, vert lorsqu'il est actif
+    <br>
+    
+    <br>
+    
+    <div class="app">
+        <div class="timer">...</div>
+        <button class="start">START</button>
+        <button class="stop hide">STOP</button>
+        <div class="circle"></div>
+    </div>
+</div>
+
+
+<script>
+    
+    class Circle {
+        
+        constructor(){            
+            this.domElement = document.querySelector('.circle')            
+        }        
+
+        // Votre code ici
+    }
+    
+    class Button {        
+        constructor(){   
+            this.timer = new Timer            
+        }                
+    }
+    
+    class StartButton extends Button {
+        
+        constructor(){            
+            super() 
+            this.domElement = document.querySelector('.start');
+            this.domElement.addEventListener('click', () => {                
+                this.timer.start()
+            })
+        } 
+
+        start(){
+            this.domElement.classList.add('hide')
+        }
+        stop(){
+            this.domElement.classList.remove('hide')
+        }  
+    }
+    
+    
+    class StopButton extends Button {
+        
+        constructor(){            
+            super() 
+            this.domElement = document.querySelector('.stop');
+            this.domElement.addEventListener('click', () => {
+                this.timer.stop()
+            })
+        } 
+
+        start(){
+            this.domElement.classList.remove('hide')
+        }
+        stop(){
+            this.domElement.classList.add('hide')
+        }  
+    } 
+    
+    class Counter {
+        
+        constructor(){  
+            this.htmlElement = document.querySelector('.timer')
+            this.value = 0 
+        }          
+        
+        start(){  
+            this.interval = setInterval(()=>{ 
+                this.value ++
+                this.htmlElement.textContent = this.value
+            }, 100)
+        }         
+        stop(){
+            clearInterval(this.interval) 
+        } 
+    }
+
+    class Timer {
+        
+        constructor(){  
+            
+            if (Timer.exists){
+                return Timer.instance
+            }            
+            Timer.exists = true;
+            Timer.instance = this; 
+            
+            this.observers = [new Counter(), new StartButton(), new StopButton()]            
+            this.isRunning = false
+        }          
+        
+        start(){ 
+            this.isRunning = true
+            this.observers.forEach(obs=> obs.start()) 
+        } 
+        
+        stop(){
+            this.isRunning = false
+            this.observers.forEach(obs=> obs.stop())
+        } 
+    }
+    
+    new Timer()
+    
+    
+</script>
+
+</body>
+</html>
