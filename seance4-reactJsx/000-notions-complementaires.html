@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // Opérateur ternaire
+        const now = new Date().getHours()
+        msg = now > 18 ? "nous sommes fermés" : "nous sommes ouverts"
+        
+        // Objets littéral //////////////////////////////
+        
+        let student = {
+            id:20,
+            name:'Alex',
+            age:20
+        }
+        
+        // Déstructuration 1 : déclaration de variables
+        let {name,age} = student
+        console.log(name)
+        console.log(age)
+        
+        // Déstructuration 2 : déclaration de paramètres
+        function display({name,age}){
+            console.log(`L'étudiant ${name} a ${age} ans`)
+        }
+        
+        display(student);
+        
+        // Fonctions fléchées //////////////////////////////
+        
+        function multiply(x, y) {
+            return x * y;
+        }
+        
+        const substract = (x, y) => { return x - y};
+        
+        const add = (x, y) => x + y;
+        
+        const doIt = () => console.log('test')
+        
+        
+        // Tableaux //////////////////////////////////////
+        
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.push('kiwi')
+        
+        console.log(fruits.toString())
+        console.log(fruits.join(';'))
+        
+        // Boucle forEach
+        const numbers = [45, 4, 9, 16, 25];
+        let txt = "";
+        numbers.forEach((value) => {
+            txt += value + "<br>";
+        })
+        console.log(txt)
+
+        // Boucle map : pour créer un nouveau tableau
+        const numbers1 = [45, 4, 9, 16, 25];
+        const numbers2 = numbers1.map((value, index) => {
+            return value * 2;
+        })
+        console.log(numbers2)
+        
+        // Filter avec filter : retourne un nouveau tableau
+        const ages = [45, 4, 9, 16, 25];
+        const over18 = ages.filter((value, index) => {
+            return value > 18;
+        })
+        console.log(over18)
+
+        // Reduire à une seule valeur avec reduce
+        const values = [45, 4, 9, 16, 25];
+        let sum = values.reduce((total, value) => {
+            return total + value;
+        } )
+        console.log(sum)        
+        
+        // Merge avec concat ou pread opérator
+        
+        const myGirls = ["Cecilie", "Lone"];
+        const myBoys = ["Emil", "Tobias", "Linus"];
+        
+        const myChildren = myGirls.concat(myBoys);
+        const children = [...myGirls, ...myBoys]
+
+        // Extraire
+        const myfruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+        const citrus = myfruits.slice(1, 3);
+        
+        
+    </script>
+</body>
+</html>
