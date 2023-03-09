@@ -1,0 +1,57 @@
+exercices
+
+EX 1 :
+- Créer une liste d'articles en html à partir d'une liste json. 
+Format : liste html
+Composant : App, List, Post
+
+Ex 2 :
+- Créer une liste de personnes à partir d'une liste json. 
+Format : table html
+Composant : App, Table, TableHeader, TableBody
+
+Ex 3 :
+- Découper un code en plusieurs composants : Comment, UserInfo, Avatar
+function Comment(props) {
+  return (
+    <div className="Comment">
+      <div className="UserInfo">
+        <img className="Avatar"
+          src={props.author.avatarUrl}
+          alt={props.author.name}
+        />
+        <div className="UserInfo-name">
+          {props.author.name}
+        </div>
+      </div>
+      <div className="Comment-text">
+        {props.text}
+      </div>
+      <div className="Comment-date">
+        {formatDate(props.date)}
+      </div>
+    </div>
+  );
+}
+
+Ex 4 :
+- On dispose de 2 composants : UserGreeting et GuestGreetings :
+ 
+function UserGreeting() {
+  return <h1>Bienvenue !</h1>;
+}
+function GuestGreeting() {
+  return <h1>Veuillez vous inscrire.</h1>;
+}
+
+Créer un composant Greetings avec une props isLoggedIn. 
+Si la props est false, afficher un composant GuestGreetings sinon UserGreetings
+
+Solution :
+
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {    return <UserGreeting />;  }  return <GuestGreeting />;}
+ReactDOM.render(
+  // Essayez de changer ça vers isLoggedIn={true} :
+  <Greeting isLoggedIn={false} />,  document.getElementById('root')); 

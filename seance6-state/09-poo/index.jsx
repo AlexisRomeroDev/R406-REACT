@@ -8,7 +8,7 @@ class App extends React.Component {
 
 // A savoir :
 // Pour manipuler le State on doit utiliser (temporairement) la syntaxe objet. 
-// Lorsque nous aurons abordé les Hooks de REact, nous pourrons manipuler le state avec la syntaxe de fonction.
+// Lorsque nous aurons abordé les Hooks de React, nous pourrons manipuler le state avec la syntaxe de fonction.
 
 // Notez les similitudes entre la programmation fonctionnelle et la programmation objet : 
 // La fonction render utilisée pour l'affichage 

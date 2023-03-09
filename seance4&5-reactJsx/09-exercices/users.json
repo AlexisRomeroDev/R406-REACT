@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "city": "Howemouth",  
+  },
+  {
+    "id": 2,
+    "name": "Ervin Howell",
+    "city": "Aliyaview" 
+  },
+  {
+    "id": 3,
+    "name": "Clementine Bauch",
+    "city": "Lebsackbury"    
+  },
+  {
+    "id": 4,
+    "name": "Patricia Lebsack",
+    "city": "Bartholomebury"
+  },
+  {
+    "id": 5,
+    "name": "Chelsey Dietrich",
+    "username": "Kamren",
+    "city": "Lebsackbury",
+  }
+]

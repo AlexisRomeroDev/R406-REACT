@@ -1,0 +1,11 @@
+Ex 1 :
+- définir un composant Store.
+Définir une propriété isOpen dans son state local. Si il est moins de 18h, le state est true; Sinon false.
+
+Ex 2 :
+Reprendre les exercices précédents :
+- adresses email
+- articles
+- users
+
+Les données de base doivent être intégrée dans le state de App

@@ -27,6 +27,7 @@
       // • les accolades sont utilisées pour encadrer le code js
       // • utiliser des parenthèses autour du code retourné
       // • les commentaires : {/* ...*/}
+      // • les balises html auto-fermantes doivent se terminer avec / ex <img/>
 
       const container = document.getElementById('root');
       const root = ReactDOM.createRoot(container);

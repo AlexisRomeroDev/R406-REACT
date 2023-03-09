@@ -23,6 +23,7 @@ function App() {
 }
 
 // A Savoir : 
+// - Les méthodes et les propriétés JSX sont CamelCase
 // - Ne pas mettre de parenthèse après le nom de la fonction de callback
 
 

@@ -1,0 +1,6 @@
+Reprendre les exercices précédents :
+- Adresse emails
+- Articles
+- Users
+
+Ajouter sur chaque ligne un bouton permettant de supprimer l'élément

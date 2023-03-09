@@ -22,7 +22,7 @@ class Timer extends React.Component {
                 clearInterval(this.timer)
             }
 
-            // Enregistrement de la valeur dans le State du composant : obligatoire !
+            // Utiliser la méthode setState pour mettre à jour l'état local
 
             this.setState({state:this.value}) 
     
@@ -42,7 +42,8 @@ class Timer extends React.Component {
 
 // A Savoir :
 
-// 
+// Utiliser la méthode setState pour mettre à jour l'état local
+// Alternative en utilisant les méthodes de cycle de vie : https://fr.reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
