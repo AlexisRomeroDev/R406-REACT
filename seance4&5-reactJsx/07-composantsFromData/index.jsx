@@ -1,6 +1,6 @@
 function Address({value}){  
 
-  return <p>{value}</p>
+  return <li>{value}</li>
 }
 
 function MyApp() {
@@ -49,12 +49,14 @@ function MyApp() {
   return (
     <div>     
     <h1>Liste d'email</h1>
+    <ul>
 
     {addresses.map((address)=>{
       return (
         <Address key={address} value={address} />
         )
       })}
+      </ul>
       
       </div>
       ) 
